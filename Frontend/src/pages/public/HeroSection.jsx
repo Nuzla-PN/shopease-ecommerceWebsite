@@ -11,7 +11,7 @@ const HeroSection = ()=>{
                 className="absolute inset-0 w-full h-full object-cover"
                 />
 
-                {/*overlay*/}
+                
                 <div className="absolute inset-0 bg-black/60"></div>
             <div className="relative z=10 h-full flex items-center justify-center px-4">
                 <div className="text-center text-white max-w-4xl">

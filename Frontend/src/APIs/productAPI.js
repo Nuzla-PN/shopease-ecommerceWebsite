@@ -1,3 +1,4 @@
+//This all axios send requests to  and its controller runs
 import axios from "axios";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL_ROOT;//ROOT means just /api
@@ -12,7 +13,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL_ROOT;//ROOT means just /api
 //Login 
   export const loginUser = async (data) => {
   const res = await axios.post(`${BASE_URL}/auth/login`, data);
-  return res.data;
+  console.log("LOGIN RESPONSE USER:", res.data.user);  return res.data;
 };
 
 //Apply as seller
@@ -42,7 +43,6 @@ export const getApprovedProducts = async()=>{
 };
 
 //To getSingle Product in separatePage
-
 export const getSingleProduct = async(id)=>{
     const res = await axios.get(`${BASE_URL}/product/${id}`);
     return res.data;

@@ -13,7 +13,7 @@ export const BuyNowAddtoCart = async(req,res)=>{
 
         const product = await ProductModel.findById(productId);
 
-        if(!product || !product.isApproved){
+        if(!product || !product.status){
           return res.status(404).json({
             success:false,
             message:"Product not available"
@@ -142,7 +142,6 @@ export const BuyNowAddtoCart = async(req,res)=>{
 
 
 //In Cart page and Each Product Page:getting ordersummary after click PLACEORDER/BuyNow button in cartPage and Each Product page
-
 export const getOrderSummary = async (req,res)=>{
     try{
 
@@ -241,7 +240,6 @@ export const ConfirmOrder = async (req,res)=>{
 };
 
 //To view MyOrders
-
 export const ViewMyOrders = async (req,res)=>{
   try{
     const userId = req.user.id;
@@ -269,7 +267,6 @@ catch (error) {
 };
 
 //CancelOrder by user
-
 export const CancelOrder = async(req,res)=>{
     try{
         const userId = req.user.id;
@@ -317,4 +314,41 @@ export const CancelOrder = async(req,res)=>{
         message: "Server error"
       });
     }
+};
+
+//create Order to find seller 
+export const createOrder = async (req, res) => {
+  try {
+
+    const { items, totalAmount, shippingAddress } = req.body;
+
+    if (!items || items.length === 0) {
+      return res.status(400).json({ message: "No items" });
+    }
+
+    const firstProduct = await ProductModel.findById(items[0].product);
+
+    if (!firstProduct) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    const order = await OrderModel.create({
+
+      user: req.user._id,
+      seller: firstProduct.seller,
+      items,
+      totalAmount,
+      shippingAddress
+
+    });
+
+    res.status(201).json({
+      success: true,
+      order
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Order creation failed" });
+  }
 };

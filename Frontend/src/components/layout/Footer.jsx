@@ -2,12 +2,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-200 py-10">
+    <footer className="bg-gray-900 text-gray-200 py-10 mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Section */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* About */}
+          
           <div>
             <h2 className="text-2xl font-bold text-white mb-2">ShopEase</h2>
             <p className="text-gray-400">
@@ -15,7 +15,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+        
           <div>
             <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
             <ul className="space-y-1">
@@ -42,7 +42,7 @@ const Footer = () => {
 
         </div>
 
-        {/* Bottom Section */}
+        
         <div className="mt-10 border-t border-gray-700 pt-4 text-center text-gray-500 text-sm">
           © 2026 ShopEase. All rights reserved. Built for educational purposes.
         </div>

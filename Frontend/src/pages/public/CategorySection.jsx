@@ -17,9 +17,16 @@ const CategorySection = () => {
     try {
       const catRes = await getAllCategories();
       const prodRes = await getApprovedProducts();
+      console.log("Approved products FULL response:", prodRes);
 
       setCategories(catRes.categories);      // ["Food","business"]
       setProducts(prodRes.product || []);         // approved products
+      // const list =
+      // prodRes.products ||
+      // prodRes.product  ||
+      // [];
+
+      // setProducts(list);
     } catch (err) {
       console.log(err);
     } finally {

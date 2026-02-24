@@ -1,6 +1,7 @@
 import Productmodel from "../models/Product.js";
 import UserRegister from "../models/User.js";
 import OrderModel from "../models/Order.js";
+
 //ADMIN Aprroving Seller request
 export const approveSellerRequest = async (req,res)=> {
     try{
@@ -34,10 +35,9 @@ export const approveSellerRequest = async (req,res)=> {
     };
 
 //GET all products for admin
-
 export const getAllProductsForAdmin = async (req,res)=>{
     try{
-        const products = await Productmodel.find().populate("seller", "name email role");
+        const products = await Productmodel.find({status:{$ne:"rejected"}}).populate("seller", "usernamebox emailbox role");
         
         res.status(200).json({
             success:true,
@@ -54,7 +54,6 @@ export const getAllProductsForAdmin = async (req,res)=>{
 };
 
 //ADMIN get all Users
-
 export const getAllUsers = async(req,res)=>{
     try{
         const users = await UserRegister.find({role:"user"});
@@ -73,7 +72,6 @@ export const getAllUsers = async(req,res)=>{
 };
 
 //ADMIN get all Sellers
-
 export const getAllSellers = async (req,res)=>{
     try{
         const sellers = await UserRegister.find({role:"seller"});
@@ -93,7 +91,6 @@ export const getAllSellers = async (req,res)=>{
 };
 
 //ADMIN Blocking and UnBlocking User
-
 export const blockUnblockUserAccount = async (req,res)=>{
     try{
         const{id} = req.params;
@@ -136,7 +133,6 @@ export const blockUnblockUserAccount = async (req,res)=>{
     };
 
 //ADMIN Blocking and UnBlocking Seller
-
 export const blockUnblockSellerAccount = async (req,res)=>{
     try{
         const{id} =req.params;
@@ -178,13 +174,12 @@ export const blockUnblockSellerAccount = async (req,res)=>{
 };
 
 //ADMIN Approve seller Product
-
 export const approveProduct = async (req,res)=>{
     try{
         const {id} = req.params;
         const product = await Productmodel.findByIdAndUpdate(
             id,
-            {isApproved:true},
+            {status:"approved"},
             {new:true}
         );
 
@@ -207,11 +202,13 @@ export const approveProduct = async (req,res)=>{
 };
 
 //ADMIN Reject Seller Product
-
 export const rejectProduct = async (req,res)=>{
     try{
         const{id} = req.params;
-        const product = await Productmodel.findByIdAndDelete(id);
+        const product = await Productmodel.findByIdAndUpdate(id,
+            {status:"rejected"},
+            {new:true}
+        );
 
         if(!product){
             return res.status(404).json({
@@ -233,7 +230,6 @@ export const rejectProduct = async (req,res)=>{
 };
 
 //ADMIN view all Orders
-
 export const getAllOrdersForAdmin = async (req, res) => {
   try {
 

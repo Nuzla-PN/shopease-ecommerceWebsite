@@ -276,6 +276,7 @@ const SingleProductDetailsPage = () => {
 
           {activeTab === "specs" && (
             <div className="text-sm text-gray-700 space-y-2">
+              <p><b>Details :</b> {product.specifications}</p>
               <p><b>Category :</b> {product.category}</p>
               <p><b>Stock :</b> {product.stock}</p>
               <p><b>Seller ID :</b> {product.seller?._id}</p>

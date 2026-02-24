@@ -8,7 +8,7 @@ import WishlistModel from "../models/wishlist.js";
 export const getApprovedProducts = async (req,res)=>{
     try{
         const product = await ProductModel.find({
-            isApproved:true
+            status:"approved"
         }).populate("seller","usernamebox emailbox");
 
         res.status(200).json({
@@ -31,7 +31,7 @@ export const getSingleProduct = async (req,res)=>{
     try{
         const product = await ProductModel.findOne({
             _id:req.params.id,
-            isApproved:true
+            status:"approved"
         }).populate("seller","usernamebox");
 
         if(!product){
@@ -222,7 +222,6 @@ export const addToCart = async (req,res)=>{
 };
 
 //View Cart
-
 export const getCart = async (req,res)=>{
     try{
         const userId = req.user.id;
@@ -252,7 +251,6 @@ export const getCart = async (req,res)=>{
 };
 
 //remove items from cart
-
 export const removeCart = async (req,res)=>{
     try{
         const cartId = req.params.id;
@@ -286,7 +284,6 @@ export const removeCart = async (req,res)=>{
 }
 
 //updateQuantity in Cart
-
 export const updateCartQuantity = async (req, res) => {
   try {
     const { quantity } = req.body;
@@ -308,10 +305,7 @@ export const updateCartQuantity = async (req, res) => {
   }
 };
 
-
-
 //select/unselect cart item to buy
-
 export const toggleCartSelection = async (req,res)=>{
     try{
         const cartId = req.params.id;

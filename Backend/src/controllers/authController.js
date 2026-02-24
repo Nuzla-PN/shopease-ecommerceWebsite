@@ -57,7 +57,6 @@ import jwt from 'jsonwebtoken';
              }
             };
     
-
     const Login = async(req,res)=>{
         try{
             const {emailbox,passbox} = req.body;
@@ -82,7 +81,7 @@ import jwt from 'jsonwebtoken';
             token,
             user:{
                 id:finduser._id,
-                namebox:finduser.usernamebox,
+                usernamebox:finduser.usernamebox,
                 emailbox:finduser.emailbox,
                 role:finduser.role
                 }
@@ -95,9 +94,12 @@ import jwt from 'jsonwebtoken';
             });
         }
     };
+
     const home= (req,res)=>{
         res.send("Welcome to User Controller Home Page");
     };
+
+
     // const applyseller = async (req,res)=>{
     //     try{
     //         const userId = req.user.id;

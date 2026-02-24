@@ -24,7 +24,7 @@ export const applyasseller = async (req,res)=>{ //user applies to become a selle
             if(user.role=== "seller"){
                 return res.status(400).json({
                     success:false,
-                    message:"User is already a seller"
+                    message:"You are already a seller"
                 });
             }
 
