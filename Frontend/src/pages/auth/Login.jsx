@@ -58,7 +58,13 @@ const Login = () => {
         user:res.user
         })
       );
-      navigate("/"); //Redirect to home page
+      const role = res.user.role;
+      if(role==="admin"){
+        navigate("/admin");
+      }else {
+        navigate("/"); //Redirect to home page
+      }
+      
 
     } catch (err) {
       setErrors({
@@ -72,23 +78,17 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-[#F8F9FA] flex flex-col">
 
-      {/* Header */}
+      
       <header className="bg-white border-b border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-xl font-bold text-[#0066CC]">
           ShopKart
         </Link>
 
-          <Link
-            to="/signup"
-            className="text-sm font-semibold text-[#0066CC]"
-          >
-            Don't have an account? Sign Up
-          </Link>
         </div>
       </header>
 
-      {/* Main */}
+      
       <main className="flex-1 flex items-center justify-center px-4">
         <div className="w-full max-w-[600px] bg-white rounded-lg border border-[#E0E0E0] p-12">
 
@@ -107,7 +107,7 @@ const Login = () => {
 
           <form onSubmit={handleSubmit} className="space-y-5">
 
-            {/* Email */}
+            
             <div>
               <label className="block text-[14px] font-semibold text-[#333333]">
                 Email
@@ -128,7 +128,7 @@ const Login = () => {
               )}
             </div>
 
-            {/* Password */}
+            
             <div>
               <label className="block text-[14px] font-semibold text-[#333333]">
                 Password
@@ -149,7 +149,7 @@ const Login = () => {
               )}
             </div>
 
-            {/* remember + forgot */}
+            
             <div className="flex justify-between items-center text-sm text-[#666666]">
               <label className="flex items-center gap-2">
                 <input type="checkbox" />
@@ -161,7 +161,7 @@ const Login = () => {
               </span>
             </div>
 
-            {/* submit */}
+           
             <button
               disabled={loading}
               className="w-full h-12 bg-[#0066CC] text-white rounded-lg
@@ -171,28 +171,18 @@ const Login = () => {
               {loading ? "Logging in..." : "Login"}
             </button>
 
-            {/* Social UI only */}
-            {/* <div className="grid grid-cols-2 gap-4">
-              <button
-                type="button"
-                className="h-12 border rounded-lg text-sm font-semibold text-[#DB4437]"
-              >
-                Google
-              </button>
-
-              <button
-                type="button"
-                className="h-12 border rounded-lg text-sm font-semibold text-[#1877F2]"
-              >
-                Facebook
-              </button>
-            </div> */}
-
+            
+          <Link
+            to="/signup"
+            className="block text-center text-sm font-semibold text-[#0066CC] mt-4"
+          >
+            Don't have an account? Sign Up
+          </Link>
           </form>
         </div>
       </main>
 
-      {/* Footer */}
+      
       <footer className="bg-white border-t border-[#E0E0E0] py-6">
         <div className="flex flex-col md:flex-row gap-3 justify-center items-center text-sm text-[#666666]">
           <span>Privacy Policy</span>

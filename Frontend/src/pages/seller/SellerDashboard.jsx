@@ -59,12 +59,12 @@ const SellerDashboard = () => {
   return (
     <div className="p-4 max-w-7xl mx-auto">
 
-      {/* Header */}
+      
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
         <h2 className="text-2xl font-semibold">Seller Dashboard</h2>
       </div>
 
-      {/* Stats */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 <Link to="/seller/orders">
         <StatCard

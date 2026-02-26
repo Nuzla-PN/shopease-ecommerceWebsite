@@ -37,7 +37,7 @@ const ProductCard = ({product,showActions=false})=>{
           ★★★★☆ (4.2)
             </p>
             </div>
-            {/*Show actions only on detail page ie single product page*/}
+          
 
             {showActions && (
                 <div onClick={(e)=>e.stopPropagation()} className="mt-3">

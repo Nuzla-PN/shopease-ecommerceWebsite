@@ -83,23 +83,18 @@ const Signup = () => {
   return (
     <div className="min-h-screen bg-[#F8F9FA] flex flex-col">
 
-      {/* Header */}
+    
       <header className="bg-white border-b border-[#E0E0E0]">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           
         <Link to="/" className="text-xl font-bold text-[#0066CC]">
           ShopKart
         </Link>
-        <Link
-            to="/login"
-            className="text-sm font-semibold text-[#0066CC]"
-          >
-            Already have an account? Login
-          </Link>
+      
         </div>
       </header>
 
-      {/* Main */}
+      
       <main className="flex-1 flex items-center justify-center px-9">
         <div className="w-full max-w-[600px] bg-white rounded-lg border border-[#E0E0E0] p-12">
 
@@ -118,7 +113,6 @@ const Signup = () => {
 
           <form onSubmit={handleSubmit} className="space-y-5">
 
-            {/* Username */}
             <div>
               <label className="block text-[14px] font-semibold text-[#333333]">
                 Username
@@ -139,7 +133,7 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Email */}
+            
             <div>
               <label className="block text-[14px] font-semibold text-[#333333]">
                 Email
@@ -160,7 +154,7 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Password */}
+            
             <div>
               <label className="block text-[14px] font-semibold text-[#333333]">
                 Password
@@ -181,7 +175,7 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Terms */}
+            
             <div>
               <label className="flex items-center gap-2 text-sm text-[#666666]">
                 <input
@@ -198,7 +192,7 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Submit */}
+          
             <button
               disabled={loading}
               className="w-full h-12 bg-[#0066CC] text-white rounded-lg
@@ -208,21 +202,12 @@ const Signup = () => {
               {loading ? "Signing up..." : "Sign Up"}
             </button>
 
-            {/* Social UI only */}
-            {/* <div className="grid grid-cols-2 gap-4">
-              <button
-                type="button"
-                className="h-12 border rounded-lg text-sm font-semibold text-[#DB4437]"
-              >
-                Google
-              </button>
-              <button
-                type="button"
-                className="h-12 border rounded-lg text-sm font-semibold text-[#1877F2]"
-              >
-                Facebook
-              </button>
-            </div> */}
+              <Link
+            to="/login"
+            className="block text-center text-sm font-semibold text-[#0066CC] mt-4"
+          >
+            Already have an account? Login
+          </Link>
 
           </form>
         </div>

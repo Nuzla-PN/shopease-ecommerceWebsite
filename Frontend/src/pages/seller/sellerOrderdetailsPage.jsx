@@ -14,7 +14,7 @@ const SellerOrderDetailsPage = () => {
 
   const loadOrder = async () => {
     try {
-      const res = await getSellerSingleOrder(id);   // ✅ PASS ID
+      const res = await getSellerSingleOrder(id);   
       console.log(res.order);
       setOrder(res.order);
     } catch (err) {
@@ -53,7 +53,7 @@ const SellerOrderDetailsPage = () => {
 
       <div className="grid md:grid-cols-2 gap-6 border rounded p-4">
 
-        {/* LEFT */}
+        
         <div>
           <div className="w-full h-72 overflow-hidden rounded border">
             <img

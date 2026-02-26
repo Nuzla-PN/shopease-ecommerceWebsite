@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema({
     seller:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"UserRegister"
-    }, //REMOVE LATE NO NEED OF SELLER
+    }, 
 
     // items:[
     //     {

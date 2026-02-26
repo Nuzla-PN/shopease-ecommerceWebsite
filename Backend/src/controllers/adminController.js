@@ -2,6 +2,43 @@ import Productmodel from "../models/Product.js";
 import UserRegister from "../models/User.js";
 import OrderModel from "../models/Order.js";
 
+//ADMIN get sellers request
+export const getSellerRequests = async (req, res) => {
+  try {
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+
+    const skip = (page - 1) * limit;
+
+    const filter = { isSellerRequested: true };
+
+    const total = await UserRegister.countDocuments(filter);
+
+    const requests = await UserRegister
+      .find(filter)
+      .select("name email isSellerRequested isSellerApproved role createdAt")
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      success: true,
+      total,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      requests
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error"
+    });
+  }
+};
+
 //ADMIN Aprroving Seller request
 export const approveSellerRequest = async (req,res)=> {
     try{
@@ -34,14 +71,57 @@ export const approveSellerRequest = async (req,res)=> {
         }
     };
 
+//ADMIN Reject seller request
+export const rejectSellerRequest = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const user = await UserRegister.findById(userId);
+
+    if (!user || !user.isSellerRequested) {
+      return res.status(400).json({
+        success: false,
+        message: "No seller request found for this user"
+      });
+    }
+    user.isSellerRequested = false;
+    user.isSellerApproved = false;
+    
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "Seller request rejected"
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error"
+    });
+  }
+};
+
 //GET all products for admin
 export const getAllProductsForAdmin = async (req,res)=>{
     try{
-        const products = await Productmodel.find({status:{$ne:"rejected"}}).populate("seller", "usernamebox emailbox role");
+        const page = Number(req.query.page)||1;
+        const limit = 10;
+        const skip = (page-1) *limit;
+        const total = await Productmodel.countDocuments({
+            status :{$ne: "rejected"}
+        });
+
+        const products = await Productmodel.find({status:{$ne:"rejected"}}).populate("seller", "usernamebox emailbox role").sort({created:-1}).skip(skip).limit(limit);
         
         res.status(200).json({
             success:true,
             count:products.length,
+            total,
+            totalPages:Math.ceil(total/limit),
+            currentPage:page,
             products
         });
     }

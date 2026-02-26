@@ -1,5 +1,5 @@
 import express from 'express';
-import {approveSellerRequest, getAllOrdersForAdmin} from '../controllers/adminController.js';
+import {approveSellerRequest, getAllOrdersForAdmin, getSellerRequests, rejectSellerRequest} from '../controllers/adminController.js';
 import {authMiddleware} from '../middleware/authMiddleware.js';
 import { getAllProductsForAdmin,getAllUsers,getAllSellers } from '../controllers/adminController.js';
 import {roleMiddleware} from '../middleware/roleMiddleware.js';
@@ -7,7 +7,9 @@ import { blockUnblockUserAccount,blockUnblockSellerAccount,approveProduct,reject
 
 const router = express.Router();
 
+router.get("/seller-requests",authMiddleware,roleMiddleware("admin"),getSellerRequests);
 router.put("/approve-seller/:userId",authMiddleware,roleMiddleware("admin"),approveSellerRequest);
+router.put("/reject-seller/:userId",authMiddleware,roleMiddleware("admin"),rejectSellerRequest);
 router.get("/getallproducts",authMiddleware,roleMiddleware("admin"),getAllProductsForAdmin);
 router.put("/product/approve/:id",authMiddleware,roleMiddleware("admin"),approveProduct);
 router.put("/product/reject/:id",authMiddleware,roleMiddleware("admin"),rejectProduct);

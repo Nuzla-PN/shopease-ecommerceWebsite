@@ -83,7 +83,7 @@ const SingleProductDetailsPage = () => {
 
       <div className="grid  md:grid-cols-2 gap-10">
 
-        {/* IMAGE */}
+       
         <div className="border rounded-lg overflow-hidden ">
           <img
             src={product.images?.[0]?.url}
@@ -92,15 +92,15 @@ const SingleProductDetailsPage = () => {
           />
         </div>
 
-        {/* DETAILS */}
+       
         <div>
 
-          {/* name */}
+        
           <h1 className="text-2xl font-bold">
             {product.name}
           </h1>
 
-          {/* rating + reviews */}
+         
           <div className="flex items-center gap-2 mt-2">
             <div className="flex text-yellow-500">
               <FaStar /><FaStar /><FaStar /><FaStar />
@@ -109,7 +109,6 @@ const SingleProductDetailsPage = () => {
             <span className="text-sm text-gray-500">(42 reviews)</span>
           </div>
 
-          {/* seller */}
           <p className="text-sm text-gray-500 mt-1">
             Sold by :
             <span className="font-medium text-gray-700 ml-1">
@@ -117,12 +116,11 @@ const SingleProductDetailsPage = () => {
             </span>
           </p>
 
-          {/* price */}
           <div className="mt-4 text-3xl font-bold text-indigo-600">
             ₹ {product.price}
           </div>
 
-          {/* stock */}
+         
           <p
             className={`mt-1 text-sm ${
               product.stock > 0 ? "text-green-600" : "text-red-600"
@@ -131,7 +129,7 @@ const SingleProductDetailsPage = () => {
             {product.stock > 0 ? "In Stock" : "Out of Stock"}
           </p>
 
-          {/* qty */}
+         
           <div className="flex items-center gap-4 mt-6">
 
             <span className="font-medium">Quantity</span>
@@ -152,10 +150,10 @@ const SingleProductDetailsPage = () => {
 
           </div>
 
-          {/* buttons */}
+         
           <div className="flex flex-wrap gap-4 mt-6">
 
-            {/* Add / Go to cart */}
+            
             <button
               onClick={() => {
                 if (isInCart) {
@@ -174,7 +172,7 @@ const SingleProductDetailsPage = () => {
               {isInCart ? "Go to cart" : "Add to cart"}
             </button>
 
-            {/* Buy now */}
+           
             <button onClick={handleBuyNow}
               className={`flex-1 border rounded-md py-2 text-sm font-medium transition
                 ${
@@ -196,7 +194,7 @@ const SingleProductDetailsPage = () => {
 
           </div>
 
-          {/* features */}
+          
           <div className="mt-8 border rounded-lg p-4">
 
             <h3 className="font-semibold mb-3">Key Features</h3>
@@ -208,7 +206,6 @@ const SingleProductDetailsPage = () => {
 
           </div>
 
-          {/* trust badges */}
           <div className="grid grid-cols-3 gap-4 mt-6 text-sm">
 
             <div className="flex flex-col items-center border rounded p-3">
@@ -231,7 +228,7 @@ const SingleProductDetailsPage = () => {
         </div>
       </div>
 
-      {/* TABS */}
+     
       <div className="mt-14">
 
         <div className="flex gap-6 border-b">
@@ -265,7 +262,7 @@ const SingleProductDetailsPage = () => {
 
         </div>
 
-        {/* TAB CONTENT */}
+        
         <div className="mt-6">
 
           {activeTab === "description" && (
@@ -319,7 +316,7 @@ const SingleProductDetailsPage = () => {
 
       </div>
 
-      {/* REVIEW SECTION (frontend only) */}
+      
       <div className="mt-12">
 
         <h2 className="text-xl font-semibold mb-4">

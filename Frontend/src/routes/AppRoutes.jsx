@@ -12,10 +12,17 @@ import SellerDashboard from "../pages/seller/SellerDashboard.jsx";
 import SellerAddProduct from "../pages/seller/sellerAddProduct.jsx";
 import SellerProducts from "../pages/seller/sellerProduct.jsx";
 import SellerOrders from "../pages/seller/sellerorders.jsx";
-import SellerRoute from "./ProtectedRoute.jsx";
+import {SellerRoute,AdminRoute } from "./ProtectedRoute.jsx";
 import { SellerLayout } from "../pages/seller/sellerLayout.jsx";
 import SellerViewProduct from "../pages/seller/SellerViewProduct.jsx";
 import SellerOrderDetailsPage from "../pages/seller/sellerOrderdetailsPage.jsx";
+import AdminLayout from "../pages/admin/AdminLayout.jsx";
+import AdminDashboard from "../pages/admin/AdminDashboard.jsx";
+import AdminUsers from "../pages/admin/AllUsers.jsx";
+import AdminSellers from "../pages/admin/AllSellers.jsx";
+import SellerRequests from "../pages/admin/SellerRequestList.jsx";
+import AdminProductsApproval from "../pages/admin/ApproveProducts.jsx";
+import AdminOrders from "../pages/admin/AllOrders.jsx";
 
 
 const AppRoutes = ()=>{
@@ -44,7 +51,18 @@ const AppRoutes = ()=>{
         <Route path="/wishlist" element={<MyWishlist/>}/>
         <Route path="/orders" element={<Order/>}/>
       </Route>
-    </Routes>
+
+      {/*Admin Routes*/}
+      <Route path="/admin" element={<AdminRoute><AdminLayout/></AdminRoute>}>
+        <Route path="/admin" element={<AdminRoute><AdminDashboard/></AdminRoute>}/>
+        <Route path = "/admin/users" element={<AdminRoute><AdminUsers/></AdminRoute>}/>
+        <Route path = "/admin/sellers" element ={<AdminRoute><AdminSellers/></AdminRoute>}/>
+        <Route path = "/admin/seller-requests" element ={<AdminRoute><SellerRequests/></AdminRoute>}/>
+        <Route path = "/admin/products" element = {<AdminRoute><AdminProductsApproval/></AdminRoute>}/>
+        <Route path = "/admin/orders" element = {<AdminRoute><AdminOrders/></AdminRoute>}/>
+        
+        </Route>
+</Routes>
   );
 };
 

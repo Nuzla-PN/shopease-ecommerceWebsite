@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Navigate } from "react-router-dom";
 
-const SellerRoute = ({children})=>{
+export const SellerRoute = ({children})=>{
     const user = useSelector((state)=>state.auth.user);
 console.log("SellerRoute:", user);
     if(!user){
@@ -15,4 +15,21 @@ console.log("SellerRoute:", user);
     return children;
 };
 
-export default SellerRoute;
+export const AdminRoute = ({ children }) => {
+
+  const token = localStorage.getItem("token");
+  const user  = JSON.parse(localStorage.getItem("user"));
+
+  if (!token || !user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  
+  if (user.role !== "admin") {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+};
+
+

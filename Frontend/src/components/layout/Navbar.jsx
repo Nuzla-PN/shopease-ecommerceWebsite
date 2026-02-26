@@ -84,8 +84,15 @@ const Navbar = () => {
                     className="border border-indigo-600 text-indigo-600 px-3 py-1.5 rounded-lg text-sm hover:bg-indigo-50"
             >
               Seller Dashboard
-            </button>
-          )}
+            </button>)}
+
+            
+          {user?.role === "admin" && (
+            <button onClick={()=>navigate("/admin")}
+                    className="border border-indigo-600 text-indigo-600 px-3 py-1.5 rounded-lg text-sm hover:bg-indigo-50"
+            >
+              Admin Dashboard
+            </button>)}
           <Link to="/">
           <button className="text-gray-700 hover:text-indigo-600" onClick={()=>{
                         const el= document.getElementById("products");

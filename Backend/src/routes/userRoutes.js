@@ -7,7 +7,7 @@ import userAccess from '../middleware/userAccess.middleware.js';
 
 const  router = express.Router();
 
-router.post("/apply-seller",authMiddleware,applyasseller);//because if user is bocked he cant be seller unless he is unblocked
+router.post("/apply-seller",authMiddleware,userAccess,applyasseller);//because if user is bocked he cant be seller unless he is unblocked
 router.get("/products",authMiddleware,userAccess,getApprovedProducts);//both home page users is public and users
 router.get("/product/:id",authMiddleware,userAccess,getSingleProduct);
 router.get("/products/search",authMiddleware,searchProduct);

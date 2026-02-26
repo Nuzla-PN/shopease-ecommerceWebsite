@@ -84,7 +84,7 @@ const SellerViewProduct = () => {
           ))}
         </div>
 
-        {/* Details */}
+        
         <div className="space-y-3">
           <p><b>Name :</b> {product.name}</p>
           <p><b>Description :</b> {product.description}</p>
@@ -119,7 +119,6 @@ const SellerViewProduct = () => {
         </div>
       </div>
 
-      {/* bottom buttons */}
       <div className="flex gap-4 mt-8">
 
         <button

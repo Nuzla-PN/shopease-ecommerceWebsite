@@ -339,7 +339,7 @@ const SellerProducts = () => {
 
       </div>
 
-      {/* mobile cards */}
+      
       <div className="grid gap-4 md:hidden">
         {filteredProducts.map((p) => (
           <div

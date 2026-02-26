@@ -73,6 +73,20 @@ import jwt from 'jsonwebtoken';
                     success:false,
                 message:"Invalid Credentials"
             });
+
+            if (finduser.isUserBlocked) {
+      return res.status(403).json({
+        success: false,
+        message: "Your account is blocked. Please contact admin."
+      });
+    }
+
+    if (finduser.role === "seller" && finduser.isSellerBlocked) {
+      return res.status(403).json({
+        success: false,
+        message: "Your seller account is blocked."
+      });
+    }
             const token = jwt.sign({id:finduser._id,role:finduser.role},process.env.SECRET_KEY,{expiresIn:process.env.JWT_EXPIRES_IN});
 
             res.status(200).json({
@@ -88,6 +102,7 @@ import jwt from 'jsonwebtoken';
              })
         }catch(err){
             console.error(err);
+            console.log(err);
             res.status(500).json({
                 success:false,
                 message:"Server Error"

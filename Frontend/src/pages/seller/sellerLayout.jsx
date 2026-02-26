@@ -3,13 +3,9 @@ import { Outlet, NavLink, Link, useNavigate } from "react-router";
 import { 
   LayoutDashboard, 
   Package, 
-  ShoppingCart, 
-  BarChart3, 
+  ShoppingCart,  
   DollarSign, 
-  Star, 
   Settings,
-  Bell,
-  MessageSquare,
   ChevronDown,
   Store
 } from "lucide-react";
@@ -35,7 +31,7 @@ export function SellerLayout() {
     { path: "/seller/products", label: "Products", icon: Package },
     { path: "/seller/orders", label: "Orders", icon: ShoppingCart },
     { path: "/seller/payments", label: "Payments", icon: DollarSign },
-    { path: "/seller/settings", label: "Settings", icon: Settings },
+   
   ];
 
   return (
@@ -79,21 +75,6 @@ export function SellerLayout() {
           ShopKart
         </Link>
           
-          
-          
-            
-            {/* <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-            </button>
-
-            
-            <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-              <MessageSquare className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-            </button> */}
-
-            {/* Profile */}
             <div className="relative">
                 <button onClick={() => setOpen((prev) => !prev)}
                     className="flex items-center gap-3 pl-3 pr-2 py-2 hover:bg-gray-100 rounded-lg"
@@ -112,7 +93,7 @@ export function SellerLayout() {
                     <ChevronDown className="w-4 h-4 text-gray-600" />
                 </button>
 
-                {/* Dropdown */}
+                
                 {open && (
                     <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-md z-50">
                     <button
@@ -126,7 +107,7 @@ export function SellerLayout() {
                 </div>
         </header>
 
-        {/* Page Content */}
+        
         <main className="flex-1 overflow-auto p-8">
           <Outlet />
         </main>

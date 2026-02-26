@@ -62,7 +62,7 @@ const CategorySection = () => {
               : "bg-white text-gray-700 hover:bg-indigo-50"
           }`}> All </button>
 
-{/* Category buttons */}
+
         {categories.map((cat) => (
           <button
             key={cat}
@@ -80,7 +80,7 @@ const CategorySection = () => {
       </div>
     </div>
       
-      {/* Product area */}
+     
 
       {filteredProducts.length === 0 ? (
         <p className="text-gray-500">Products not found</p>
