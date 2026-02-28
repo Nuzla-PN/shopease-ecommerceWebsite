@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllOrdersForAdmin } from "../../APIs/adminAPI.JS";
+import { getAllOrdersForAdmin } from "../../APIs/adminAPI.js";
 
 const ITEMS_PER_PAGE = 10;
 

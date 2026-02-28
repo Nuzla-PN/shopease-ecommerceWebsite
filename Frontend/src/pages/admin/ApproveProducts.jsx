@@ -3,7 +3,7 @@ import {
   getAllProductsForAdmin,
   approveProductAdmin,
   rejectProductAdmin
-} from "../../APIs/adminAPI.JS";
+} from "../../APIs/adminAPI.js";
 
 const ITEMS_PER_PAGE = 10;
 

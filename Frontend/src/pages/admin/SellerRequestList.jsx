@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { getAllSellerAdmin } from "../../APIs/adminAPI.JS";
-import { approveSellerAdmin,rejectSellerAdmin } from "../../APIs/adminAPI.JS";
+import { approveSellerAdmin,rejectSellerAdmin } from "../../APIs/adminAPI.js";
 
 const PAGE_SIZE = 10;
 

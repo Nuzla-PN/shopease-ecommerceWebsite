@@ -1,7 +1,7 @@
 import { Users, Store, Package, ClipboardList } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { getAllOrdersForAdmin, getAllProductsForAdmin, getAllSellerAdmin, getAllUsersAdmin } from "../../APIs/adminAPI.JS";
+import { getAllOrdersForAdmin, getAllProductsForAdmin, getAllSellerAdmin, getAllUsersAdmin } from "../../APIs/adminAPI.js";
 
 const StatCard = ({ icon, title, value }) => (
   <div className="bg-white p-5 rounded-xl border shadow-sm flex items-center gap-4">

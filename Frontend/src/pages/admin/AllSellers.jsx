@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllSellerAdmin, blockSellerAdmin } from "../../APIs/adminAPI.JS";
+import { getAllSellerAdmin, blockSellerAdmin } from "../../APIs/adminAPI.js";
 import { CheckCircle, Clock, Slash, Store, User } from "lucide-react";
 
 const AdminSellers = () => {

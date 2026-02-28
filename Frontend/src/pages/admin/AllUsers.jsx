@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"; 
-import { getAllUsersAdmin, blockUserAdmin } from "../../APIs/adminAPI.JS";
+import { getAllUsersAdmin, blockUserAdmin } from "../../APIs/adminAPI.js";
 import { User, Users } from "lucide-react";
 
 const AdminUsers = () => {
